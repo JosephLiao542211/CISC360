@@ -132,14 +132,14 @@ Q3:
 spiral_seq :: Integer -> String
 spiral_seq n
   | n < 0     = ""  {- cases -}
-  | o = helper 0 n
+  | otherwise = help 0 n
 
 
   where
-    helper :: Integer -> Integer -> String {- helper function -}
-    helper k n
+    help :: Integer -> Integer -> String {- helper function -}
+    help k n
       | k == n   = show (spiral k 180)
-      | o = show (spiral k 180)++";"++ helper (k + 1) n
+      | k/=n = show (spiral k 180)++";"++ help (k + 1) n
 
 
 
