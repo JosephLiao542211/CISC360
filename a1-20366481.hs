@@ -16,21 +16,21 @@ check_that_you_added_your_student_ID_above = ()
 
    I have read the "Read this first" section,
      including "Reminder", "Try to start early", "Late policy",
-     and "Your lowest assignment mark is dropped":
+     and "Your lowest assignment mark is dropped": YES
 
-   I have read the "Version control" section:
+   I have read the "Version control" section: YES
 
-   I have read the "IMPORTANT: Your file must compile" section:
+   I have read the "IMPORTANT: Your file must compile" section: YES
 
-   I have read the "Document your code" section:
+   I have read the "Document your code" section: YES
 
-   I have read the "Strive for simplicity" section:
+   I have read the "Strive for simplicity" section: YES
 
-   I have read the "Be careful with library functions" section:
+   I have read the "Be careful with library functions" section: YES
 
-   I have read the "Test cases" section:
+   I have read the "Test cases" section: YES
 
-   I have added my student ID above: 
+   I have added my student ID above: YES
 -}
 
 {-
@@ -95,7 +95,7 @@ spiral dir span =
   then
     1
   else
-    (span - dir) * spiral (span - dir) (1 - span)
+    (span - dir) * spiral (span - dir) (1 - span) {- recursion -}
 
 -- Testing spiral:
 test_spiral1, test_spiral2, test_spiral3, test_spiral4, test_spiral :: Bool
@@ -130,14 +130,16 @@ Q3:
 -}
 
 spiral_seq :: Integer -> String
-spiral_seq n = 
-  if 
-    n==0
-  then
-    ""
-  else
-  show(spiral)
+spiral_seq n
+  | n < 0     = ""  {- cases -}
+  | o = helper 0 n
 
+
+  where
+    helper :: Integer -> Integer -> String {- helper function -}
+    helper k n
+      | k == n   = show (spiral k 180)
+      | o = show (spiral k 180)++";"++ helper (k + 1) n
 
 
 
@@ -153,11 +155,11 @@ Q4.1: Replace the underlines (_______).
 
      (\q -> 1 + (q * 3)) 2
 
-  => _________________________    _________________________
+  => 1 + (2 * 3)    by subsititution with 2 for q
 
-  => _________________________    _________________________
+  => 1+(6)          by arithmetic
 
-  => _______                      by arithmetic
+  => 7              by arithmetic
 
   For full marks, state the substitution in the function application step.
   For example:
@@ -177,11 +179,11 @@ incr x = x + 1
 
      (if True then incr else (\z -> 9)) 0
 
-  => _____________________________________  ______________________________
+  => incr 0  by if then else 
 
-  => _____________________________________  ______________________________
+  => 0+1     by subsituting x for 0
 
-  => _____________________________________  ______________________________
+  => 1       by arithmetic
 
   For full marks, state the substitution in all function application steps.
 
@@ -194,5 +196,5 @@ Q4.3:
 
      (\x -> (\y -> (y, x))) incr
 
-  => ____________________________________  ________________________________
+  => (\x -> (\y -> (y, incr))) by subsituting incr for x
 -}
