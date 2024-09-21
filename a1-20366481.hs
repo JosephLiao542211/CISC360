@@ -136,7 +136,7 @@ spiral_seq n
 
 
   where
-    help :: Integer -> Integer -> String {- helper function -}
+    help ::Integer -> Integer -> String {- helper function -}
     help k n
       | k == n   = show (spiral k 180)
       | k/=n = show (spiral k 180)++";"++ help (k + 1) n
